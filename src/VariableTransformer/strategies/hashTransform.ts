@@ -1,5 +1,6 @@
 import { Staretgy } from "./strategy.abstract"
 import hash from "fnv1a"
+import hashMap from "../hashMap.json"
 
 
 export class HashTransform extends Staretgy {
@@ -10,9 +11,11 @@ export class HashTransform extends Staretgy {
 
         for(let row of Object.keys(variables)) {
 
+            console.log(variableToSearch)
+
             row = row.substring(1, row.length - 1)
 
-            if(hash(variableToSearch.toLowerCase()).toString(16) === row) {
+            if(hashMap[row] || hash(variableToSearch.toLowerCase()).toString(16) === row) {
                 return variables[`{${row}}`]
             }
 

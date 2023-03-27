@@ -19,6 +19,7 @@ export class VariableTransformer {
         dataToTransform = this.removeTags(dataToTransform)
         dataToTransform = this.transformVariables(dataToTransform, variables)
         dataToTransform = this.transformIcons(dataToTransform)
+        console.log(dataToTransform, variables)
 
         return dataToTransform
 
@@ -36,6 +37,9 @@ export class VariableTransformer {
                 processedVariables[row.name] = row.value?.join("/")
             }
         } else {
+            if(variables.variables) {
+                variables = {...variables, ...variables.variables}
+            }
             processedVariables = variables
         }
 
@@ -67,7 +71,7 @@ export class VariableTransformer {
             return "OPERATIONAL_TRANSFORM"
         } 
 
-        if(Object.keys(variables).includes(stringToCheck)) {
+        if(Object.keys(variables).find(x => x.toLowerCase() === stringToCheck.toLowerCase())) {
             return "DIRECT_TRANSFORM"
         }
 

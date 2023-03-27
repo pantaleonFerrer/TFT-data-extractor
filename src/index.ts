@@ -1,3 +1,3 @@
 import { TFTDataExtractor } from "./TFTDataExtractor";
 
-new TFTDataExtractor().run(8);
+new TFTDataExtractor().run(8)

@@ -7,7 +7,7 @@ export class DirectTransform extends Staretgy {
 
     public run(variableToSearch: string, variables:  {[key: string]: any}): string {
 
-        return variables[variableToSearch]
+        return variables[Object.keys(variables).find(x => x.toLowerCase() === variableToSearch.toLowerCase())]
     }
 
 }
