@@ -59,7 +59,7 @@ export class VariableTransformer {
     }
 
     private removeTags(str:string) : string {
-        return str.replace( /(<([^>]+)>)/ig, '');
+        return str?.replace( /(<([^>]+)>)/ig, '');
     }
 
     private selectStrategy(stringToCheck: string, variables: any): string {
